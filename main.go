@@ -388,8 +388,8 @@ func Task(logStr *string, wg *sync.WaitGroup) {
 }
 
 var codes = flag.String("codes", "", "代码规则")
-var wxKey = flag.String("wxKey", "", "企业微信WebHook的key")
-var second = flag.Int64("interval", 30, "监听间隔 单位：秒 默认30")
+var wxKey = flag.String("wxkey", "", "企业微信WebHook的key")
+var second = flag.Int64("second", 30, "监听间隔 单位：秒 默认30")
 
 func main() {
 
