@@ -32,37 +32,11 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
         echo "arm平台"; \
     fi
 
-ENV INTERVAL=30 \
-    PARDON=600 \
-    NAME="" \
-    HOST="" \
-    MODEL=1 \
-    GB=1000000 \
-    INTERFACE="eth0" \
-    WXKEY="" \
-    SHUTDOWN="no" \
-    SHUTDOWNTYPE="dbus" \
-    SSHHOST="" \
-    SSHPWD="" \
-    SSHPORT=22 \
-    SMTPHOST="smtp.qq.com:587" \
-    SMTPEMAIL="" \
-    SMTPPWD=""
+ENV SECOND=30 \
+    CODES="" \
+    WXKEY=""
 
 CMD ./main \
-  -interval $INTERVAL \
-  -pardon $PARDON \
-  -name $NAME \
-  -host $HOST \
-  -model $MODEL \
-  -gb $GB \
-  -interface $INTERFACE \
-  -wxKey $WXKEY \
-  -shutdown $SHUTDOWN \
-  -shutdownType $SHUTDOWNTYPE \
-  -sshHost $SSHHOST \
-  -sshPwd $SSHPWD \
-  -sshPort $SSHPORT \
-  -smtpHost $SMTPHOST \
-  -smtpEmail $SMTPEMAIL \
-  -smtpPwd $SMTPPWD
+  -second $SECOND \
+  -codes $CODES \
+  -wxKey $WXKEY
