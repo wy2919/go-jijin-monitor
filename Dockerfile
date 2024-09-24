@@ -39,4 +39,4 @@ ENV SECOND=30 \
 CMD ./main \
   -second $SECOND \
   -codes $CODES \
-  -wxKey $WXKEY
+  -wxkey $WXKEY
