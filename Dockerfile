@@ -4,7 +4,7 @@ WORKDIR /apps
 
 RUN apk add --no-cache git
 
-RUN git clone https://github.com/wy2919/go-network-monitor.git .
+RUN git clone https://github.com/wy2919/go-jijin-monitor.git .
 
 RUN go mod init main && go mod tidy
 
