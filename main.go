@@ -401,18 +401,22 @@ func main() {
 		for {
 			select {
 			case <-ticker.C:
-				logStr := ""
+				// 在9:00到16:00之间执行
+				if time.Now().Hour() >= 9 && time.Now().Hour() < 16 {
 
-				// 创建计数器
-				var wg sync.WaitGroup
-				wg.Add(1)
+					logStr := ""
 
-				go Task(&logStr, &wg)
+					// 创建计数器
+					var wg sync.WaitGroup
+					wg.Add(1)
 
-				wg.Wait()
+					go Task(&logStr, &wg)
 
-				if logStr != "" {
-					PrintLog(strings.TrimSuffix(logStr, "\n\n"))
+					wg.Wait()
+
+					if logStr != "" {
+						PrintLog(strings.TrimSuffix(logStr, "\n\n"))
+					}
 				}
 			}
 		}
