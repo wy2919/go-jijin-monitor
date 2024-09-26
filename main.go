@@ -379,8 +379,11 @@ func Task(logStr *string, wg *sync.WaitGroup) {
 	for _, codeItem := range codeArr {
 		item, ok := dataMap[codeItem.Code]
 		if ok {
-			IsInitPrice(item, logStr)
-			IsUpDownPrice(codeItem, item, logStr)
+			// 判断今开和当前价格都不为0
+			if item.Open.Cmp(big.NewFloat(0.0)) != 0 && item.Trade.Cmp(big.NewFloat(0.0)) != 0 {
+				IsInitPrice(item, logStr)
+				IsUpDownPrice(codeItem, item, logStr)
+			}
 		} else {
 			*logStr += fmt.Sprintf("code参数错误！没有找到该【%s】对应的基金\n\n", codeItem.Code)
 		}
