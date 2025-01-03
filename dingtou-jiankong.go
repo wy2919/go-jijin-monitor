@@ -280,12 +280,15 @@ func countPrice(dataItem JSONData, codeRule CodeRule, logStr *string) {
 	// 记录前索引
 	is := false
 
+	fmt.Println("执行2")
+
 	// 计算返回新下标
 	index := getDecreaseStep(priceList, dataItem.Trade)
 	if index != -1 && index > GetLogData(dataItem.Code).Index {
 		GetLogData(dataItem.Code).Index = index
 		is = true
 	}
+	fmt.Println("执行3")
 
 	// 索引发生了变化
 	if is {
@@ -295,6 +298,8 @@ func countPrice(dataItem JSONData, codeRule CodeRule, logStr *string) {
 
 func Task(logStr *string, wg *sync.WaitGroup) {
 	defer wg.Done()
+
+	fmt.Println("执行1")
 
 	// 1.代码  2.涨百分比  3.跌百分比
 	codeArr := parseCodes(*codes)
@@ -312,6 +317,11 @@ func Task(logStr *string, wg *sync.WaitGroup) {
 
 	// 合并切片
 	data := append(data1, data2...)
+
+	if len(data) == 0 {
+		log.Println("从新浪获取数据为0")
+		return
+	}
 
 	// 将切片转换为 map
 	dataMap := convertToMap(data)
@@ -350,7 +360,7 @@ func main() {
 		for {
 			select {
 			case <-ticker.C:
-				// 在9:00到16:00之间执行
+				// 在6:00到20:00之间执行
 				if time.Now().Hour() >= 6 && time.Now().Hour() < 20 {
 
 					logStr := ""
