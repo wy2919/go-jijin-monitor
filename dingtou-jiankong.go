@@ -297,7 +297,6 @@ func Task(logStr *string, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	// 1.代码  2.涨百分比  3.跌百分比
-	//codes := "159973-0.10-0.01,511130-0.10-0.01"
 	codeArr := parseCodes(*codes)
 	data1, err := fetchFundData("ETF基金")
 	if err != nil {
@@ -340,6 +339,10 @@ func main() {
 	// 定投监控
 
 	flag.Parse()
+
+	fmt.Printf("参数codes：%s \n", *codes)
+	fmt.Printf("参数wxKey： %s \n", *wxKey)
+	fmt.Printf("参数second： %d \n", *second)
 
 	ticker := time.NewTicker(time.Duration(*second) * time.Second)
 
