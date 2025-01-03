@@ -279,16 +279,13 @@ func countPrice(dataItem JSONData, codeRule CodeRule, logStr *string) {
 
 	// 记录前索引
 	is := false
-
-	fmt.Println("执行2")
-
+	
 	// 计算返回新下标
 	index := getDecreaseStep(priceList, dataItem.Trade)
 	if index != -1 && index > GetLogData(dataItem.Code).Index {
 		GetLogData(dataItem.Code).Index = index
 		is = true
 	}
-	fmt.Println("执行3")
 
 	// 索引发生了变化
 	if is {
@@ -298,9 +295,7 @@ func countPrice(dataItem JSONData, codeRule CodeRule, logStr *string) {
 
 func Task(logStr *string, wg *sync.WaitGroup) {
 	defer wg.Done()
-
-	fmt.Println("执行1")
-
+	
 	// 1.代码  2.涨百分比  3.跌百分比
 	codeArr := parseCodes(*codes)
 	data1, err := fetchFundData("ETF基金")
